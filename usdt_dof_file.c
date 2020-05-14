@@ -184,7 +184,8 @@ usdt_dof_file_load(usdt_dof_file_t *file, const char *module)
 #if __FreeBSD__ >= 11
         dh.dofhp_pid = getpid();
 #endif
-        (void) strncpy(dh.dofhp_mod, module, sizeof (dh.dofhp_mod));
+        (void) strncpy(dh.dofhp_mod, module, sizeof (dh.dofhp_mod) - 1);
+        dh.dofhp_mod[sizeof (dh.dofhp_mod) - 1] = '\0';
 
         if ((fd = open(helper, O_RDWR)) < 0)
                 return (-1);
