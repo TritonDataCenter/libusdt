@@ -1,5 +1,5 @@
-CC = gcc
-CFLAGS = -O2 -Wall
+CC := gcc
+CFLAGS := -O2 -Wall
 
 # MAC_BUILD - set this to "universal" to build a 2-way fat library 
 MAC_BUILD = universal
@@ -20,7 +20,7 @@ endif
 
 ifeq ($(UNAME), SunOS)
 RANLIB=/bin/true
-PATH +=:/usr/perl5/5.10.0/bin:/usr/perl5/5.12/bin
+PATH := $(PATH):/usr/perl5/5.10.0/bin:/usr/perl5/5.12/bin
 CFLAGS += -fPIC
 ifeq ($(ARCH), i86pc)
 ARCH = $(shell isainfo -k)
